@@ -124,14 +124,14 @@ async function generatePlaylist(songs, geminiKey) {
 async function callGeminiAPI(userInput, apiKey) {
     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent?key=${apiKey}`;
     const prompt = `다음 노래들을 기반으로 정확히 15곡의 플레이리스트를 만들어라.
-사용자가 입력한 곡은 반드시 포함하고 부족하면 비슷한 곡을 추가해라.
-플레이리스트 흐름은 자연스럽게 구성한다.
-(잔잔한 시작 -> 에너지 상승 -> 자연스러운 마무리)
+사용자 입력은 주로 "(제목) - (가수)" 형태이며, 이를 바탕으로 분위기가 어울리고 흐름이 자연스러운 유튜브 검색용 곡들을 선정해라.
+사용자가 입력한 곡은 반드시 첫 부분에 포함하고, 부족하면 비슷한 장르와 분위기의 곡을 추가해라.
+플레이리스트 흐름은 자연스럽게 구성한다. (잔잔한 시작 -> 에너지 상승 -> 자연스러운 마무리)
 
 반환 형식:
-1. Artist - Song Title
-2. Artist - Song Title
-3. Artist - Song Title
+1. 가수 - 제목
+2. 가수 - 제목
+3. 가수 - 제목
 ...
 (15번까지 정확히 포맷을 맞춰서, 다른 인사말이나 부연 설명 없이 번호 목록만 출력해라.)`;
 
@@ -208,14 +208,31 @@ async function fetchYoutubeVideos(songs) {
             const response = await fetch(url, {
                 headers: { 'Authorization': `Bearer ${oauthAccessToken}` }
             });
+            
             if (response.ok) {
                 const data = await response.json();
                 if (data.items && data.items.length > 0) {
                     videoIds.push(data.items[0].id.videoId);
                 }
+            } else {
+                const errorData = await response.json();
+                console.error('YouTube API Error Response:', errorData);
+                const errorMsg = errorData.error?.message || '알 수 없는 유튜브 API 오류';
+                
+                // 치명적인 API 에러(할당량, API 미활성화 등)인 경우 즉시 에러 발생시켜 중단
+                throw new Error(errorMsg);
             }
         } catch (err) {
             console.error('Failed to search youtube for:', song, err);
+            
+            // API 오류 메시지인 경우 원인을 파악하기 쉽게 한글 설명 추가
+            if (err.message.includes('has not been used') || err.message.includes('disabled')) {
+                throw new Error('Google Cloud Console에서 [YouTube Data API v3]가 활성화되어 있지 않습니다. API를 먼저 사용 설정해주세요.');
+            } else if (err.message.includes('quotaExceeded') || err.message.includes('exceeded')) {
+                throw new Error('유튜브 API 일일 검색 할당량(Quota)을 초과했습니다. 내일 다시 시도하거나 할당량을 늘려주세요.');
+            } else {
+                throw new Error(`유튜브 검색 중 오류가 발생했습니다: ${err.message}`);
+            }
         }
     }
 
