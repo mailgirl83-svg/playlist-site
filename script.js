@@ -27,7 +27,10 @@ function updateLoadingText(msg) {
 
 function resetState() {
     generateBtn.disabled = false;
-    generateBtn.innerHTML = '<svg class="icon" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg> Google 인증 및 플레이리스트 생성';
+    generateBtn.innerHTML = `
+        <svg class="icon-btn" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+        Google 인증 및 재생목록 생성
+    `;
     loadingSection.style.display = 'none';
     inputSection.style.display = 'block';
 }
