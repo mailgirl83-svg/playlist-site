@@ -44,15 +44,25 @@
                 <div class="hint">곡 제목과 가수명을 함께 입력하면 더 정확해집니다.</div>
             </div>
 
-            <div class="grid-form">
+            <div class="vertical-form">
                 <div class="form-group">
                     <label for="gemini-key">Gemini API Key</label>
-                    <input type="password" id="gemini-key" placeholder="AI-...">
+                    <div class="input-wrapper">
+                        <input type="password" id="gemini-key" placeholder="AI-...">
+                        <button type="button" class="toggle-btn" onclick="toggleVisibility('gemini-key', this)">
+                            <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        </button>
+                    </div>
                 </div>
 
                 <div class="form-group">
                     <label for="google-client-id">Google Client ID</label>
-                    <input type="password" id="google-client-id" placeholder="...apps.googleusercontent.com">
+                    <div class="input-wrapper">
+                        <input type="password" id="google-client-id" placeholder="...apps.googleusercontent.com">
+                        <button type="button" class="toggle-btn" onclick="toggleVisibility('google-client-id', this)">
+                            <svg class="eye-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        </button>
+                    </div>
                 </div>
             </div>
             
