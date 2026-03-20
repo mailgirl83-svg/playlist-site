@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - AI Playlist Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            align-items: flex-start;
+            padding: 3rem 1rem;
+        }
+        .container {
+            max-width: 720px;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--primary);
+            text-decoration: none;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+        .back-link:hover {
+            color: var(--primary-hover);
+        }
+        .doc-header {
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .doc-header h1 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin: 0 0 0.5rem 0;
+            color: var(--text-main);
+            letter-spacing: -0.025em;
+        }
+        .doc-header .meta {
+            font-size: 0.875rem;
+            color: var(--text-sub);
+        }
+        .section {
+            margin-bottom: 2rem;
+        }
+        .section h2 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0 0 0.75rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .section h2::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 1.05rem;
+            background-color: var(--primary);
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+        .section p {
+            font-size: 0.95rem;
+            color: var(--text-sub);
+            line-height: 1.8;
+            margin: 0 0 0.75rem 0;
+        }
+        .section ul {
+            padding-left: 1.5rem;
+            margin: 0.5rem 0;
+        }
+        .section li {
+            font-size: 0.95rem;
+            color: var(--text-sub);
+            line-height: 1.8;
+            margin-bottom: 0.35rem;
+        }
+        .notice-box {
+            background: #f0f4ff;
+            border: 1px solid #c7d2fe;
+            border-radius: var(--radius-md);
+            padding: 1rem 1.25rem;
+            margin: 0.75rem 0;
+        }
+        .notice-box p {
+            margin: 0;
+            color: #3730a3;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .footer-note {
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-sub);
+        }
+        .footer-note a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .footer-note a:hover { text-decoration: underline; }
+        a { color: var(--primary); }
+    </style>
+</head>
+<body>
+<div class="container">
+    <a href="index.html" class="back-link">← Back to Home</a>
+
+    <div class="doc-header">
+        <h1>Privacy Policy</h1>
+        <p class="meta">
+            <strong>Service:</strong> AI Playlist Generator &nbsp;|&nbsp;
+            <strong>Effective Date:</strong> January 1, 2025 &nbsp;|&nbsp;
+            <strong>Last Updated:</strong> March 20, 2025
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>1. Introduction</h2>
+        <p>
+            This Privacy Policy describes how AI Playlist Generator ("the Service," "we," "us," or "our") handles information when you use our web-based application. The Service enables users to generate music playlists using Google Gemini AI and create YouTube playlists via the YouTube Data API v3.
+        </p>
+        <p>
+            By using the Service, you acknowledge that you have read and understood this Privacy Policy.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>2. Information We Access</h2>
+        <p>
+            The Service accesses the following information solely to provide its core functionality:
+        </p>
+        <ul>
+            <li><strong>Gemini API Key:</strong> Provided by the user and used exclusively to make requests to the Google Gemini API for playlist generation. This key is never transmitted to our servers.</li>
+            <li><strong>Google OAuth Client ID:</strong> Provided by the user and used solely to initiate the OAuth 2.0 authorization flow for accessing the YouTube Data API.</li>
+            <li><strong>Google OAuth Access Token:</strong> A temporary token issued by Google after user authorization, used solely to create YouTube playlists on behalf of the user. This token is held in browser memory only and is never persisted or transmitted to third parties.</li>
+            <li><strong>Song Input Data:</strong> Text entered by the user (song titles and artist names) is sent directly to the Gemini API to generate playlist recommendations and to YouTube Data API for video search. This data is not stored or logged by the Service.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>3. Information We Do NOT Collect</h2>
+        <div class="notice-box">
+            <p>The Service does NOT collect, store, transmit, or share any user data on any server operated by us.</p>
+        </div>
+        <p>Specifically, we do not collect:</p>
+        <ul>
+            <li>Personally identifiable information (name, email address, etc.)</li>
+            <li>API Keys or OAuth credentials</li>
+            <li>Google account information or profile data</li>
+            <li>Usage analytics or behavioral data</li>
+            <li>IP addresses or device identifiers</li>
+            <li>Cookies or local storage data</li>
+        </ul>
+        <p>
+            All processing occurs entirely within the user's browser. No backend server infrastructure is operated by this Service.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>4. Use of Google APIs</h2>
+        <p>
+            The Service uses the following Google APIs and is subject to the corresponding Google policies:
+        </p>
+        <ul>
+            <li><strong>Google Gemini API</strong> — for AI-based playlist recommendations. Subject to <a href="https://ai.google.dev/terms" target="_blank">Google Gemini API Terms of Service</a>.</li>
+            <li><strong>YouTube Data API v3</strong> — for searching videos and creating YouTube playlists. Subject to <a href="https://developers.google.com/youtube/terms/api-services-terms-of-service" target="_blank">YouTube API Services Terms of Service</a> and <a href="https://www.youtube.com/t/terms" target="_blank">YouTube Terms of Service</a>.</li>
+            <li><strong>Google OAuth 2.0 (Google Identity Services)</strong> — for user authentication. Subject to <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>.</li>
+        </ul>
+        <p>
+            The Service's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank">Google API Services User Data Policy</a>, including the Limited Use requirements.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>5. Data Retention</h2>
+        <p>
+            The Service does not retain any user data. All information (API keys, access tokens, song inputs) exists only in the user's browser memory during an active session. Upon closing or refreshing the browser tab, all such information is permanently discarded.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>6. Third-Party Services</h2>
+        <p>
+            By using this Service, you interact directly with third-party services operated by Google. We are not responsible for the privacy practices of these third-party services. We encourage you to review Google's Privacy Policy at <a href="https://policies.google.com/privacy" target="_blank">https://policies.google.com/privacy</a>.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>7. Security</h2>
+        <p>
+            Because all operations are performed client-side within your browser, API keys and tokens are not exposed to our servers. However, users are solely responsible for the security of their API keys and OAuth credentials. We strongly recommend:
+        </p>
+        <ul>
+            <li>Never sharing your API Key or Client ID with others.</li>
+            <li>Revoking access tokens via <a href="https://myaccount.google.com/permissions" target="_blank">Google Account Permissions</a> after use.</li>
+            <li>Restricting the scope and usage of your Google Cloud credentials in the GCP Console.</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>8. Children's Privacy</h2>
+        <p>
+            The Service is not directed to individuals under the age of 13. We do not knowingly collect personal information from children. If you believe a child has used the Service in a way that violates this policy, please contact us.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>9. Changes to This Privacy Policy</h2>
+        <p>
+            We reserve the right to update this Privacy Policy at any time. Changes will be reflected by updating the "Last Updated" date at the top of this page. Your continued use of the Service after any changes constitutes your acceptance of the revised Privacy Policy.
+        </p>
+    </div>
+
+    <div class="section">
+        <h2>10. Contact</h2>
+        <p>
+            If you have any questions or concerns regarding this Privacy Policy, please contact us via the project's GitHub Issues page.
+        </p>
+    </div>
+
+    <div class="footer-note">
+        <p>
+            <a href="index.html">Home</a> &nbsp;·&nbsp;
+            <a href="term.html">Terms of Service</a>
+        </p>
+        <p style="margin-top: 0.5rem;">© 2025 AI Playlist Generator. All rights reserved.</p>
+    </div>
+</div>
+</body>
+</html>

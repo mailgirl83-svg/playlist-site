@@ -55,6 +55,13 @@ function initOAuthAndGenerate() {
                     oauthAccessToken = tokenResponse.access_token;
                     // Proceed with generation
                     generatePlaylist(songs, geminiKey);
+                } else if (tokenResponse && tokenResponse.error) {
+                    // 사용자가 계정 선택을 취소하거나 거절한 경우
+                    if (tokenResponse.error === 'access_denied' || tokenResponse.error === 'user_cancelled_login' || tokenResponse.error === 'popup_closed_by_user') {
+                        showError('Google 로그인이 취소되었습니다. 다시 시도해 주세요.');
+                    } else {
+                        showError('Google 인증 오류: ' + tokenResponse.error);
+                    }
                 } else {
                     showError('Google 로그인에 실패했거나 취소되었습니다.');
                 }
@@ -321,7 +328,9 @@ function resetApp() {
     currentPlaylistText = '';
     currentYoutubeUrl = '';
     oauthAccessToken = null;
-    inputSection.style.display = 'block';
     resultSection.style.display = 'none';
+    loadingSection.style.display = 'none';
     hideError();
+    // 버튼 상태를 초기 상태로 완전히 복구
+    resetState();
 }
