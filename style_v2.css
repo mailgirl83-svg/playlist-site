@@ -1,0 +1,12 @@
+:root {
+    --primary: #ff4d6d;
+    --secondary: #ffb3c1;
+}
+.logo { color: var(--primary); font-weight: 800; font-size: 1.5rem; }
+textarea, input {
+    background: var(--secondary) !important;
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem 0;
+}
+body { background: #fff; font-family: sans-serif; }
