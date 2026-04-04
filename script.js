@@ -52,7 +52,7 @@ function initOAuthAndGenerate() {
     try {
         const tokenClient = google.accounts.oauth2.initTokenClient({
             client_id: clientId,
-            scope: 'https://www.googleapis.com/auth/youtube.force-ssl',
+            scope: 'https://www.googleapis.com/auth/youtube',
             callback: (tokenResponse) => {
                 if (tokenResponse && tokenResponse.access_token) {
                     oauthAccessToken = tokenResponse.access_token;
@@ -63,14 +63,14 @@ function initOAuthAndGenerate() {
                     if (tokenResponse.error === 'access_denied' || tokenResponse.error === 'user_cancelled_login' || tokenResponse.error === 'popup_closed_by_user') {
                         showError('Google 로그인이 취소되었습니다. 다시 시도해 주세요.');
                     } else {
-                        showError('Google 인증 오류: ' + tokenResponse.error);
+                        showError(`인증 오류: ${tokenResponse.error}\n(도메인이 등록되어 있는지, 테스트 사용자로 등록되어 있는지 확인해주세요.)`);
                     }
                 } else {
-                    showError('Google 로그인에 실패했거나 취소되었습니다.');
+                    showError('Google 로그인에 실패했거나 취소되었습니다. (팝업 차단 또는 도메인 등록 문제)');
                 }
             },
             error_callback: (err) => {
-                showError('Google OAuth 초기화 오류: ' + (err.message || '인증 실패'));
+                showError('OAuth 초기화 오류: ' + (err.message || '인증 실패') + '\n(Google Cloud Console의 승인된 출처 설정을 확인해주세요.)');
             }
         });
         tokenClient.requestAccessToken();
